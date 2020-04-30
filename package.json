@@ -1,0 +1,64 @@
+{
+  "name": "parks-and-rec-api",
+  "version": "1.0.0",
+  "description": "An API to get details for the cast and episodes of the TV show Parks and Recreation (2009-2015)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tedeschi-byui/parks-and-rec-api.git"
+  },
+  "keywords": [
+    "parks",
+    "and",
+    "recreation",
+    "parks and rec",
+    "parks and recreation",
+    "rec",
+    "nbc",
+    "leslie knope",
+    "ron swanson",
+    "april ludgate",
+    "andy dwier",
+    "ann perkins",
+    "mark brendanawicz",
+    "tom haverford",
+    "ben wyatt",
+    "chris traeger",
+    "jerry",
+    "larry",
+    "terry",
+    "garry",
+    "gergich",
+    "donna meagle",
+    "craig middlebrooks",
+    "pawnee",
+    "indiana",
+    "li'l sebastian",
+    "little sebastian",
+    "orin",
+    "tammy swanson",
+    "tammy I",
+    "tammy II",
+    "jeremy jamm",
+    "joan calamezzo",
+    "perd hapley",
+    "shauna malwae-tweep",
+    "brandi maxxxx",
+    "bobby newport"
+  ],
+  "author": "Henrique Tedeschi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tedeschi-byui/parks-and-rec-api/issues"
+  },
+  "homepage": "https://github.com/tedeschi-byui/parks-and-rec-api#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.10"
+  }
+}
