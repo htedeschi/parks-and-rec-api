@@ -11,7 +11,7 @@ router.get("/ping", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-	Character.find({}, {_id:0})
+	Character.find({}, { _id: 0 })
 		.then((data) => {
 			res.json(data).end();
 		})
@@ -22,12 +22,15 @@ router.get("/", (req, res) => {
 
 router.get("/:name", (req, res) => {
 	const name = req.params.name;
-	Character.find({
-		$or: [
-			{ name: { $regex: name, $options: "i" } },
-			{ portrayed: { $regex: name, $options: "i" } },
-		],
-	}, {_id:0})
+	Character.find(
+		{
+			$or: [
+				{ name: { $regex: name, $options: "i" } },
+				{ portrayed: { $regex: name, $options: "i" } },
+			],
+		},
+		{ _id: 0 }
+	)
 		.then((data) => {
 			res.json(data);
 		})
@@ -62,7 +65,6 @@ router.get("/:name", (req, res) => {
 // 		background,
 // 		personality
 //     });
-    
 
 // 	character
 // 		.save()
