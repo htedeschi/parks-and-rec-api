@@ -36,43 +36,44 @@ router.get("/:name", (req, res) => {
 		});
 });
 
-router.post("/", (req, res) => {
-	if (!req.body.name) {
-		res.status(422);
-		res.statusMessage = 'Missing parameter "name"';
-		res.end();
-		return;
-    }
+// router.post("/", (req, res) => {
+// 	if (!req.body.name) {
+// 		res.status(422);
+// 		res.statusMessage = 'Missing parameter "name"';
+// 		res.end();
+// 		return;
+//     }
 
-	if (!req.body.portrayed) {
-		res.status(422);
-		res.statusMessage = 'Missing parameter "portrayed"';
-		res.end();
-		return;
-	}
+// 	if (!req.body.portrayed) {
+// 		res.status(422);
+// 		res.statusMessage = 'Missing parameter "portrayed"';
+// 		res.end();
+// 		return;
+// 	}
 
-	const name = req.body.name;
-	const portrayed = req.body.portrayed;
-	const background = req.body.background;
-	const personality = req.body.personality;
+// 	const name = req.body.name;
+// 	const portrayed = req.body.portrayed;
+// 	const background = req.body.background;
+// 	const personality = req.body.personality;
 
-	const character = new Character({
-		name,
-		portrayed,
-		background,
-		personality
-	});
+// 	const character = new Character({
+// 		name,
+// 		portrayed,
+// 		background,
+// 		personality
+//     });
+    
 
-	character
-		.save()
-		.then((data) => {
-			console.log(`Success! ${data}`);
-			res.json(data);
-		})
-		.catch((err) => {
-			console.log(`Error! ${err}`);
-			res.json(err);
-		});
-});
+// 	character
+// 		.save()
+// 		.then((data) => {
+// 			console.log(`Success! ${data}`);
+// 			res.json(data);
+// 		})
+// 		.catch((err) => {
+// 			console.log(`Error! ${err}`);
+// 			res.json(err);
+// 		});
+// });
 
 module.exports = router;
