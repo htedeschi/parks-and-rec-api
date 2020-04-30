@@ -14,6 +14,7 @@ const mongo_options = {
 const api_v1_Characters = require("./api/v1/characters");
 const api_v1_Seasons = require("./api/v1/seasons");
 const api_v1_Episodes = require("./api/v1/episodes");
+const api_v1_BandNames = require("./api/v1/bandnames");
 // const api_v2_Characters = require("./api/v2/characters");
 // const vouchersRoute = require("./routes/vouchers");
 
@@ -41,6 +42,7 @@ app.use(function (req, res, next) {
 app.use("/api/v1/characters", api_v1_Characters);
 app.use("/api/v1/seasons", api_v1_Seasons);
 app.use("/api/v1/episodes", api_v1_Episodes);
+app.use("/api/v1/bandnames", api_v1_BandNames);
 // app.use("/api/v2/characters", api_v2_Characters);
 // app.use("/vouchers", vouchersRoute);
 
