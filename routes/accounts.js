@@ -8,7 +8,7 @@ let transporter = nodemailer.createTransport({
 	service: "Zoho",
 	auth: {
 		user: "api@henriquetedeschi.com", // generated zoho user
-		pass: "Aspire.@27", // generated zoho password
+		pass: process.env.EMAIL_PWD, // generated zoho password
 	},
 });
 
