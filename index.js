@@ -2,6 +2,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 
 const ejs = require("ejs");
+const jwt = require("jsonwebtoken");
 const express = require("express");
 const app = express();
 
@@ -11,6 +12,7 @@ const mongo_options = {
 	useUnifiedTopology: true,
 };
 
+const api_v1_Accounts = require("./routes/accounts");
 const api_v1_Characters = require("./api/v1/characters");
 const api_v1_Seasons = require("./api/v1/seasons");
 const api_v1_Episodes = require("./api/v1/episodes");
@@ -39,10 +41,11 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.use("/api/v1/characters", api_v1_Characters);
-app.use("/api/v1/seasons", api_v1_Seasons);
-app.use("/api/v1/episodes", api_v1_Episodes);
-app.use("/api/v1/bandnames", api_v1_BandNames);
+app.use("/accounts", api_v1_Accounts);
+app.use("/api/v1/characters", authenticateToken, api_v1_Characters);
+app.use("/api/v1/seasons", authenticateToken, api_v1_Seasons);
+app.use("/api/v1/episodes", authenticateToken, api_v1_Episodes);
+app.use("/api/v1/bandnames", authenticateToken, api_v1_BandNames);
 // app.use("/api/v2/characters", api_v2_Characters);
 // app.use("/vouchers", vouchersRoute);
 
@@ -66,3 +69,38 @@ app.get("/", function (req, res) {
 	res.render("index");
 	res.end();
 });
+
+function authenticateToken(req, res, next) {
+	bearerHeader = req.headers["authorization"];
+
+	if (typeof bearerHeader != "undefined") {
+		let bearer = bearerHeader.split(" ");
+
+		jwt.verify(bearer[1], process.env.JWT_KEY, (err, data) => {
+			if (err) {
+				res.status(401).send("Unauthorized. Check your token.");
+				res.end();
+				return;
+			} else {
+				const Account = require("./models/Account");
+				Account.find({ email: data.email, token: bearer[1] }).then(
+					(results) => {
+						if (results.length > 0) {
+							next();
+						} else {
+							res.status(401).send(
+								"Unauthorized. Check your token."
+							);
+							res.end();
+							return;
+						}
+					}
+				);
+			}
+		});
+	} else {
+		// Forbidden
+		res.status(403).send("Forbidden. Missing Token.");
+		res.end();
+	}
+}
