@@ -35,14 +35,28 @@ router.get("/confirm/:id", (req, res) => {
 					replyTo: `"$Parks and Rec API" <api@henriquetedeschi.com>`,
 					to: `"${data.email}" <${data.email}>`, // list of receivers
 					subject: "Parks and Rec API TOKEN", // Subject line
-					html: `Hello!
+					html: `<!DOCTYPE html>
+					<html lang="en">
+					
+					<head>
+						<meta charset="UTF-8">
+						<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					</head>
+					
+					<body>
+						<h1>Hello!</h1>
+						<br>
+						<h2>Here is your token:</h2>
                         <br>
-						Here is your token:
+                        <div style="max-width:500px; background-color: chartreuse; padding: 15px;">
+                            <p style="word-break: break-all;">${data.token}</p>
+                        </div>
 						<br>
-						<span style="max-width:200px;">${data.token}</span>
 						<br>
-						<br>
-						Thank you.`, // html body
+						Thank you.
+					</body>
+					
+					</html>`, // html body
 				};
 
 				// send mail with defined transport object
@@ -61,6 +75,7 @@ router.get("/confirm/:id", (req, res) => {
 
 					res.json({ success: true, date: new Date() });
 					res.end();
+					return;
 				});
 			});
 		})
@@ -90,7 +105,13 @@ router.post("/", (req, res) => {
 		.then((data) => {
 			console.log(`Success! ${data}`);
 
-			const address = req.protocol + '://' + req.hostname + (req.app.settings.port ? ':' + req.app.settings.port : '') + '/accounts/confirm/' + data._id;
+			const address =
+				req.protocol +
+				"://" +
+				req.hostname +
+				(req.app.settings.port ? ":" + req.app.settings.port : "") +
+				"/accounts/confirm/" +
+				data._id;
 
 			// send email to confirm email
 			nodemailer.createTestAccount((err, account) => {
