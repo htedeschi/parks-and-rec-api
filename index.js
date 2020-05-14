@@ -87,7 +87,7 @@ function authenticateToken(req, res, next) {
 		});
 	} else {
 		// Forbidden
-		res.status(403).send('Forbidden. Missing Token.')
+		res.status(403).send("Forbidden. Missing Token.");
 		res.end();
 	}
 }

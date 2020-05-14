@@ -90,6 +90,8 @@ router.post("/", (req, res) => {
 		.then((data) => {
 			console.log(`Success! ${data}`);
 
+			const address = req.protocol + '://' + req.hostname + (req.app.settings.port ? ':' + req.app.settings.port : '') + '/accounts/confirm/' + data._id;
+
 			// send email to confirm email
 			nodemailer.createTestAccount((err, account) => {
 				// setup email data with unicode symbols
@@ -100,9 +102,9 @@ router.post("/", (req, res) => {
 					subject: "Confirm your email - Parks and Rec API", // Subject line
 					html: `Hello!
                         <br>
-                        Before continuing with your token, please confirm your email clicking <a href="//parksandrecapi/accounts/confirm/${data._id}">here</a> or copying and pasting the following text to your browser address bar:
+                        Before continuing with your token, please confirm your email clicking <a href="${address}">here</a> or copying and pasting the following text to your browser address bar:
                         <br>
-                        <span>parksandrecapi/accounts/confirm/${data._id}</span>`, // html body
+                        <span>${address}</span>`, // html body
 				};
 
 				// send mail with defined transport object
