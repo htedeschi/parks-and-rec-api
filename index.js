@@ -78,11 +78,24 @@ function authenticateToken(req, res, next) {
 
 		jwt.verify(bearer[1], process.env.JWT_KEY, (err, data) => {
 			if (err) {
-				res.status(401).send("Unauthorized. Check your token");
+				res.status(401).send("Unauthorized. Check your token.");
 				res.end();
 				return;
 			} else {
-				next();
+				const Account = require("./models/Account");
+				Account.find({ email: data.email, token: bearer[1] }).then(
+					(results) => {
+						if (results.length > 0) {
+							next();
+						} else {
+							res.status(401).send(
+								"Unauthorized. Check your token."
+							);
+							res.end();
+							return;
+						}
+					}
+				);
 			}
 		});
 	} else {
