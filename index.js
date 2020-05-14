@@ -11,6 +11,7 @@ const mongo_options = {
 	useUnifiedTopology: true,
 };
 
+const api_v1_Accounts = require("./api/v1/accounts");
 const api_v1_Characters = require("./api/v1/characters");
 const api_v1_Seasons = require("./api/v1/seasons");
 const api_v1_Episodes = require("./api/v1/episodes");
@@ -39,6 +40,7 @@ app.use(function (req, res, next) {
 	next();
 });
 
+app.use("/api/v1/accounts", api_v1_Accounts);
 app.use("/api/v1/characters", api_v1_Characters);
 app.use("/api/v1/seasons", api_v1_Seasons);
 app.use("/api/v1/episodes", api_v1_Episodes);
