@@ -5,10 +5,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parks and Rec API</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    Welcome!
+    <nav class="navbar">
+        <img src="./img/logo.svg" alt="">
+    </nav>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-12">
+                <h4 class="champion">Overview</h4>
+                <p>
+                    Welcome to parks and rec unnoficial API!
+                </p>
+                <p>
+                    Finally you can build something cool based on a great TV Show! With this API you can get information
+                    about the characters, the seasons and episodes, and - my favorite best - names for bands that Andy
+                    Dwyer made up! I hope you have a good time using it and creating new things with it!
+                </p>
+
+                <hr class="my-5">
+
+                <h4 class="champion">Request Token</h4>
+                <p>To request a token, please enter the email to be associated with the token and follow the
+                    instructions sent to the email.</p>
+                <form id="form-request-token">
+                    <form>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" name="email" class="form-control" id="email"
+                                aria-describedby="emailHelp" required>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="g-recaptcha my-2" data-sitekey="6Le8tv4UAAAAAKX7H0Q5EgcOKdSn82W7szpKBaJO"></div>
+                        <button id="submit" type="button" class="btn btn-primary">Submit</button>
+                    </form>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        document.querySelector("#submit").addEventListener("click", function (e) {
+
+            document.querySelector("#submit").setAttribute("disabled", "disabled");
+
+            e.preventDefault();    //stop form from submitting
+            let kvpairs = [];
+            let form = document.getElementById("form-request-token");
+            let email;
+            let gresponse;
+
+            if (!form.checkValidity()) {
+                window.alert("Missing information to submit");
+                return;
+            }
+
+            for (let i = 0; i < form.elements.length; i++) {
+                let e = form.elements[i];
+                kvpairs.push(encodeURIComponent(e.name) + "=" + encodeURIComponent(e.value));
+                
+                if (e.name == "g-recaptcha-response") {
+                    if (!e.value) {
+                        window.alert("Are you a robot? Check the box to confirm you are a real person");
+                        return;
+                    }
+                }
+            }
+            var queryString = kvpairs.join("&");
+
+            // console.log(queryString);
+            // return;
+
+            var http = new XMLHttpRequest();
+            var url = './accounts/';
+            var params = queryString;
+            http.open('POST', url, true);
+
+            //Send the proper header information along with the request
+            http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            http.onreadystatechange = function () {//Call a function when the state changes.
+                if (http.readyState == 4 && http.status == 200) {
+                    window.alert("Token successfully created. Your token should arrive in your email.");
+                }
+                if (http.readyState == 4 && http.status == 422) {
+                    window.alert("Missing information to submit");
+                }
+                
+                document.querySelector("#email").value = "";
+                document.querySelector("#submit").removeAttribute("disabled");
+                grecaptcha.reset();
+            }
+
+            http.send(params);
+
+
+        });
+    </script>
 </body>
 
 </html>

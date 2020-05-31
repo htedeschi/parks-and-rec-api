@@ -1,0 +1,44 @@
+@font-face {
+	font-family: "Champion";
+	src: url("/font/Champion-HTF-Heavyweight.woff2") format("woff2"),
+		url("/font/Champion-HTF-Heavyweight.woff") format("woff");
+	font-weight: 900;
+	font-style: normal;
+}
+
+.champion {
+	font-family: "Champion";
+	font-weight: 900;
+	font-style: normal;
+}
+
+nav {
+	background-color: #46b238;
+	position: absolute;
+	width: 100%;
+	height: 90px;
+	left: 0px;
+	top: 0px;
+}
+
+nav img {
+	margin: 0 auto;
+	height: 90%;
+}
+
+.btn-primary {
+	color: black;
+	background-color: #46b238;
+	border-color: rgb(62, 122, 54);
+}
+
+.btn-primary:hover {
+	color: black;
+	background-color: rgb(66, 134, 57);
+	border-color: rgb(62, 122, 54);
+}
+
+.btn-primary:active {
+	background-color: #2b8020;
+	border-color: #0c6426;
+}
