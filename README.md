@@ -28,6 +28,6 @@ You can find all the documentation in our [Wiki page](https://github.com/htedesc
 All data provided from this API was scraped from Wikipedia following the [Wikipedia's Text of Creative Commons Attribution-ShareAlike 3.0 Unported License](https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License). This API is NOT an official API, and it is provided *"as is"* without expressed or implied warranty of any kind. Please use at your own risk and discretion.
 
 ## License
-This Api os provided under the MIT License. See the [LICENSE](https://github.com/htedeschi/parks-and-rec-api/blob/master/LICENSE) file for details.
+This API is provided under the MIT License. See the [LICENSE](https://github.com/htedeschi/parks-and-rec-api/blob/master/LICENSE) file for details.
 
 ![Guard reading "I can do what I want" from the paper Ron Swanson gave him](https://media.giphy.com/media/jL0c2TrfDUz9S/200.gif)
