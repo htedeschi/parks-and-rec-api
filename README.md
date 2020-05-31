@@ -17,7 +17,7 @@ First things first, right? To use this API you'll need a Token. I made a token s
 ### Token 
 To request a token, go to [https://www.parksandrecapi.com/](https://www.parksandrecapi.com/) and follow the steps. Don't worry, I only ask for an email because I send a confirmation email to make sure the email is real. We won't sell or do anything with it other than things related to the API. Pinky promise.
 ### Documentation
-You can find all the documentation in our [Wiki page]([https://github.com/htedeschi/parks-and-rec-api/wiki](https://github.com/htedeschi/parks-and-rec-api/wiki))! Make sure to check it out to see exactly how it works.
+You can find all the documentation in our [Wiki page](https://github.com/htedeschi/parks-and-rec-api/wiki)! Make sure to check it out to see exactly how it works.
 
 ## Author
 **[Henrique Tedeschi](https://github.com/htedeschi)**
