@@ -19,8 +19,8 @@ To request a token, go to [https://www.parksandrecapi.com/](https://www.parksand
 ### Documentation
 You can find all the documentation in our [Wiki page]([https://github.com/htedeschi/parks-and-rec-api/wiki](https://github.com/htedeschi/parks-and-rec-api/wiki))! Make sure to check it out to see exactly how it works.
 
-## Authors
-* **[Henrique Tedeschi](https://github.com/htedeschi)**
+## Author
+**[Henrique Tedeschi](https://github.com/htedeschi)**
 
 *Not that you have to, but if you want to support me, you can by buying me a bottle of vanilla coke* ✌ [PayPal](http://paypal.me/henriquetedeschi), [Venmo](https://venmo.com/Henrique-Tedeschi)
 
