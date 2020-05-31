@@ -73,7 +73,8 @@ router.get("/confirm/:id", (req, res) => {
 					// 	nodemailer.getTestMessageUrl(info)
 					// );
 
-					res.json({ success: true, date: new Date() });
+					// res.json({ success: true, date: new Date() });
+					res.render("confirm");
 					res.end();
 					return;
 				});
