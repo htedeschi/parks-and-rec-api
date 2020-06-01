@@ -28,7 +28,21 @@
                     Dwyer made up! I hope you have a good time using it and creating new things with it!
                 </p>
 
-                <hr class="my-5">
+                <hr class="my-3">
+
+                <h4 class="champion">Documentation</h4>
+                <p>
+                    We have a great documentation waiting for your reading! 
+                </p>
+                <p>
+                    Check out our:
+                    <ul>
+                        <li><span class="text-muted">Github repo &RightArrow; </span><a href="https://github.com/htedeschi/parks-and-rec-api" rel="nofollow" target="_blank">https://github.com/htedeschi/parks-and-rec-api</a></li>
+                        <li><span class="text-muted">Wiki &RightArrow; </span><a href="https://github.com/htedeschi/parks-and-rec-api/wiki" rel="nofollow" target="_blank">https://github.com/htedeschi/parks-and-rec-api/wiki</a></li>
+                    </ul>
+                </p>
+
+                <hr class="my-3">
 
                 <h4 class="champion">Request Token</h4>
                 <p>To request a token, please enter the email to be associated with the token and follow the
@@ -46,6 +60,27 @@
                         <button id="submit" type="button" class="btn btn-primary">Submit</button>
                     </form>
                 </form>
+
+                <hr class="my-3">
+
+                <h4 class="champion">Disclaimer</h4>
+                <p>
+                    All data provided from this API was scraped from Wikipedia following the <a
+                        href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License"
+                        target="_blank" rel="nofollow">Wikipedia's Text of Creative Commons Attribution-ShareAlike 3.0
+                        Unported License</a>. This API is NOT an official API, and it is provided *"as is"* without
+                    expressed or implied warranty of any kind. Please use at your own risk and discretion.
+                </p>
+
+                <hr class="my-3">
+
+                <h4 class="champion">License</h4>
+                <p>
+                    This API is provided under the MIT License. See the
+                    <a href="https://github.com/htedeschi/parks-and-rec-api/blob/master/LICENSE" target="_blank"
+                        rel="nofollow">LICENSE</a> file for details.
+                </p>
+
             </div>
         </div>
     </div>
@@ -78,7 +113,7 @@
             for (let i = 0; i < form.elements.length; i++) {
                 let e = form.elements[i];
                 kvpairs.push(encodeURIComponent(e.name) + "=" + encodeURIComponent(e.value));
-                
+
                 if (e.name == "g-recaptcha-response") {
                     if (!e.value) {
                         window.alert("Are you a robot? Check the box to confirm you are a real person");
@@ -106,7 +141,7 @@
                 if (http.readyState == 4 && http.status == 422) {
                     window.alert("Missing information to submit");
                 }
-                
+
                 document.querySelector("#email").value = "";
                 document.querySelector("#submit").removeAttribute("disabled");
                 grecaptcha.reset();
