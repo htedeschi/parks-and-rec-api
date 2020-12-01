@@ -29,3 +29,4 @@ jobs:
          cd /home/${{ secrets.SSH_USERNAME }}/public_html/parksandrecapi.com/
          source /home/${{ secrets.SSH_USERNAME }}/nodevenv/public_html/parksandrecapi.com/14/bin/activate && cd /home/${{ secrets.SSH_USERNAME }}/public_html/parksandrecapi.com
          npm install
+         pkill -HUP node
