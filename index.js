@@ -55,14 +55,14 @@ app.listen(PORT, function () {
 });
 
 // Connect to MongoDB
-mongoose
-	.connect(process.env.MONGODB_URI, mongo_options)
-	.then(() => {
-		console.log(`Connected to DB!`);
-	})
-	.catch((err) => {
-		console.log(`Error occurred! ${err}`);
-	});
+// mongoose
+// 	.connect(process.env.MONGODB_URI, mongo_options)
+// 	.then(() => {
+// 		console.log(`Connected to DB!`);
+// 	})
+// 	.catch((err) => {
+// 		console.log(`Error occurred! ${err}`);
+// 	});
 
 // Routes
 app.get("/", function (req, res) {
